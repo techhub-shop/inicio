@@ -1,0 +1,342 @@
+<html><head><base href="." /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TechHub - Productos</title><style>
+:root {
+    --primary: #7B2CBF;
+    --secondary: #9D4EDD;
+    --dark: #1A1A1A;
+    --light: #F8F9FA;
+    --accent: #5A189A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+nav {
+    background-color: rgba(26, 26, 26, 0.95);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.filters {
+    margin-top: 80px;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.filters-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.filter-group select {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--dark);
+    color: var(--light);
+    cursor: pointer;
+}
+
+.products-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-category {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.high-end {
+    background-color: #FFD700;
+    color: black;
+}
+
+.mid-range {
+    background-color: #C0C0C0;
+    color: black;
+}
+
+.budget {
+    background-color: #CD7F32;
+    color: white;
+}
+
+.price {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.amazon-button {
+    width: 100%;
+    background-color: #FF9900;
+    color: black;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+}
+
+.amazon-button:hover {
+    background-color: #FF8C00;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .filters-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">TechHub</div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="productos.html">Productos</a>
+                <a href="index.html#top">Tope de Gama</a>
+                <a href="index.html#about">Nosotros</a>
+                <a href="index.html#contact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="filters">
+        <div class="filters-content">
+            <div class="filter-group">
+                <label for="category">Categoría</label>
+                <select id="category">
+                    <option value="all">Todas las categorías</option>
+                    <option value="gpu">Tarjetas Gráficas</option>
+                    <option value="cpu">Procesadores</option>
+                    <option value="ram">Memoria RAM</option>
+                    <option value="motherboard">Placas Base</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="range">Gama</label>
+                <select id="range">
+                    <option value="all">Todas las gamas</option>
+                    <option value="high">Gama Alta</option>
+                    <option value="mid">Gama Media</option>
+                    <option value="budget">Gama Baja</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="price">Rango de Precio</label>
+                <select id="price">
+                    <option value="all">Todos los precios</option>
+                    <option value="0-500">$0 - $500</option>
+                    <option value="501-1000">$501 - $1000</option>
+                    <option value="1001+">$1001+</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <div class="products-grid" id="productsContainer">
+        <!-- Los productos se generarán dinámicamente con JavaScript -->
+    </div>
+
+<script>
+const products = [
+    {
+        name: "NVIDIA RTX 4090",
+        category: "gpu",
+        range: "high",
+        price: 1999.99,
+        description: "La tarjeta gráfica más potente del mercado gaming",
+        image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%237B2CBF' opacity='0.5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20'>GPU</text></svg>",
+        amazonUrl: "https://www.amazon.com"
+    },
+    {
+        name: "Intel i9-13900KS",
+        category: "cpu",
+        range: "high",
+        price: 799.99,
+        description: "El procesador más rápido para gaming",
+        image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%237B2CBF' opacity='0.5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20'>CPU</text></svg>",
+        amazonUrl: "https://www.amazon.com"
+    },
+    // Añade más productos aquí
+];
+
+function getRangeClass(range) {
+    switch(range) {
+        case 'high': return 'high-end';
+        case 'mid': return 'mid-range';
+        case 'budget': return 'budget';
+        default: return '';
+    }
+}
+
+function displayProducts(filteredProducts = products) {
+    const container = document.getElementById('productsContainer');
+    container.innerHTML = '';
+
+    filteredProducts.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <span class="product-category ${getRangeClass(product.range)}">
+                ${product.range === 'high' ? 'Gama Alta' : product.range === 'mid' ? 'Gama Media' : 'Gama Baja'}
+            </span>
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="price">$${product.price.toFixed(2)}</div>
+            <a href="${product.amazonUrl}" class="amazon-button" target="_blank">Ver en Amazon</a>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function filterProducts() {
+    const category = document.getElementById('category').value;
+    const range = document.getElementById('range').value;
+    const priceRange = document.getElementById('price').value;
+
+    let filtered = products;
+
+    if (category !== 'all') {
+        filtered = filtered.filter(p => p.category === category);
+    }
+
+    if (range !== 'all') {
+        filtered = filtered.filter(p => p.range === range);
+    }
+
+    if (priceRange !== 'all') {
+        const [min, max] = priceRange.split('-').map(Number);
+        filtered = filtered.filter(p => {
+            if (max) {
+                return p.price >= min && p.price <= max;
+            } else {
+                return p.price >= min;
+            }
+        });
+    }
+
+    displayProducts(filtered);
+}
+
+// Event listeners para los filtros
+document.getElementById('category').addEventListener('change', filterProducts);
+document.getElementById('range').addEventListener('change', filterProducts);
+document.getElementById('price').addEventListener('change', filterProducts);
+
+// Mostrar todos los productos al cargar la página
+document.addEventListener('DOMContentLoaded', () => displayProducts());
+</script>
+
+</body></html>
